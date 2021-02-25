@@ -9,6 +9,10 @@ func NewParser(html string) *Parser {
 }
 
 func (p *Parser) ExtractTag(tagBegin string) (tag string, err error) {
-	n := newNode(p.HTML, tagBegin)
+	var n *node
+	n, err = newNode(p.HTML, tagBegin)
+	if err != nil {
+		return
+	}
 	return n.traverse()
 }
