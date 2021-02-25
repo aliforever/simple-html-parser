@@ -3,7 +3,9 @@ package main
 import (
 	"fmt"
 	"math/rand"
-	simple_html_parser "simple-html-parser"
+
+	simple_html_parser "github.com/aliforever/simple-html-parser"
+
 	"time"
 )
 
