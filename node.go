@@ -50,6 +50,7 @@ Loop:
 			for _, tagByte := range tagBytes {
 				char, err = r.ReadByte()
 				if err != nil {
+					result = ""
 					err = errors.New("invalid html tag " + err.Error())
 					return
 				}
@@ -58,6 +59,7 @@ Loop:
 					isEnding = true
 					char, err = r.ReadByte()
 					if err != nil {
+						result = ""
 						err = errors.New("invalid html tag " + err.Error())
 						return
 					}
@@ -72,6 +74,7 @@ Loop:
 				char, err = r.ReadByte()
 				if err != nil {
 					err = errors.New("invalid html tag " + err.Error())
+					result = ""
 					return
 				}
 				result += string(char)
@@ -93,6 +96,7 @@ Loop:
 			}
 		}
 	}
+	result = ""
 	err = errors.New("invalid html")
 	return
 }
