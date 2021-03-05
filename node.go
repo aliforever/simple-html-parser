@@ -23,7 +23,7 @@ func newNode(html string, beginTag string) (n *node, err error) {
 		err = errors.New("begin_tag_not_found")
 		return
 	}
-	tagR := regexp.MustCompile(`<([^\s]+).*?>`).FindStringSubmatch(beginTag)
+	tagR := regexp.MustCompile(`<([^\s^/>]+)\s?.+?>?`).FindStringSubmatch(beginTag)
 	n = &node{
 		rawHtml:        html,
 		start:          html[i : i+len(beginTag)],
